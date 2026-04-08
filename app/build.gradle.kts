@@ -31,9 +31,11 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+   kotlin {
+       compilerOptions {
+           jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17)
+       }
+   }
     buildFeatures {
         compose = true
     }
@@ -56,7 +58,13 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
-    implementation("androidx.appcompat:appcompat:1.7.0")
+
+    // material
+    implementation(libs.androidx.compose.material.icons.extended)
+
+    // Retrofit
+    implementation(libs.squareup.retrofit)
+    implementation(libs.squareup.retrofit.gson)
 
 
 }
